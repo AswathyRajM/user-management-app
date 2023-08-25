@@ -1,4 +1,4 @@
-export const calculateAge = (birthday) => {
+export const calculateAge = (birthday: Date) => {
   // birthday is a date
   var ageDifMs = Date.now() - birthday.getTime();
   var ageDate = new Date(ageDifMs); // miliseconds from epoch

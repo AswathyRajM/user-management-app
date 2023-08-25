@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './NavBar.css';
-import { Button, TextField, Typography } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { setDialougOpen } from '../../redux/dialogSlice';
 import { clearSearch, searchUser } from '../../redux/userSlice';
 
 function NavBar() {
   const dispatch = useDispatch();
-
   const [timer, setTimer] = useState<any>(null);
 
   const handleSeahcInputChange = (
@@ -16,11 +15,12 @@ function NavBar() {
     let search = e.target.value;
 
     clearTimeout(timer);
+
+    // if search term is empty reset the table data to default
     if (!search) {
       dispatch(clearSearch());
       return;
     }
-    console.log('here');
 
     // debounce technique
     const newTimer = setTimeout(() => {

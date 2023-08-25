@@ -11,9 +11,7 @@ import { RootState } from '../../redux/store';
 
 export default function TableComponent() {
   const { userList } = useSelector((state: RootState) => state.users);
-  // console.log(userList);
 
-  React.useEffect(() => {}, [userList]);
   if (userList.length)
     return (
       <TableContainer component={Paper}>

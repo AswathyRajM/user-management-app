@@ -14,14 +14,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { userRegister } from '../../redux/userSlice';
 import { calculateAge } from '../../util/calculateAge';
-
-export interface formValues {
-  name: string;
-  email: string;
-  pincode: string;
-  city: string;
-  dob: string;
-}
+import { formValues } from '../../util/interfaces';
 
 export default function UserRegisterComponent() {
   const dispatch = useDispatch();
@@ -58,11 +51,11 @@ export default function UserRegisterComponent() {
       .min(6, 'Pincode must be exactly 6 digits')
       .max(6, 'Pincode must be exactly 6 digits'),
     dob: yup
-      .date(),
-      // .required('Date of Birth is a required field')
-      // .test('valid-age', 'Should be 18 years old', (date) =>
-      //   calculateAge(date)
-      // ),
+      .date()
+      .required('Date of Birth is a required field')
+      .test('valid-age', 'Should be 18 years old', (date) =>
+        calculateAge(date)
+      ),
     city: yup.string().required('City is a required field'),
   });
 

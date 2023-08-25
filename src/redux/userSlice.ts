@@ -18,9 +18,10 @@ export const userSlice = createSlice({
     },
     searchUser: (state, action: PayloadAction<string>) => {
       state.userList = state.userList.filter((user: userInterface) => {
-        let searchTerm = `/${action.payload}/i`;
-        return user.name.search(searchTerm);
+        return user.name.toLowerCase().indexOf(action.payload) !== -1;
       });
+
+      console.log(state.userList);
     },
     clearSearch: (state) => {
       state.userList = [...state.allUser];

@@ -1,9 +1,9 @@
 export interface userInterface {
   name: string;
   email: string;
-  DOB: string;
+  dob: string;
   city: string;
-  pincode: number;
+  pincode: string;
 }
 
 export interface userListInterface {
@@ -14,4 +14,8 @@ export interface initialStateInterface {
   userList: userInterface[];
   allUser: userInterface[];
   error: null | string;
+}
+
+export interface initialStateDialogInterface {
+  isOpen: boolean;
 }

@@ -9,12 +9,12 @@ const initialState: initialStateInterface = {
 };
 
 export const userSlice = createSlice({
-  name: 'issue',
+  name: 'userSlice',
   initialState,
   reducers: {
     userRegister: (state, action: PayloadAction<userInterface>) => {
       state.allUser = [...state.allUser, action.payload];
-      state.userList = [...state.allUser, action.payload];
+      state.userList = [...state.allUser];
     },
     searchUser: (state, action: PayloadAction<string>) => {
       state.userList = state.userList.filter((user: userInterface) => {
